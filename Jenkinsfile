@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'nitesh23' }
 
     environment {
         IMAGE_NAME = 'yourdockerhubusername/react-todo-ui'  // Replace with your DockerHub repo
@@ -25,11 +25,12 @@ pipeline {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                        sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
-                        sh "docker tag ${IMAGE_NAME}:${env.BUILD_NUMBER} ${IMAGE_NAME}:latest"
-                        sh "docker push ${IMAGE_NAME}:${env.BUILD_NUMBER}"
-                        sh "docker push ${IMAGE_NAME}:latest"
-                        sh 'docker logout'
+                        // Windows-compatible commands using 'bat'
+                        bat "echo %DOCKER_PASS% | docker login -u %DOCKER_USER% --password-stdin"
+                        bat "docker tag ${IMAGE_NAME}:${env.BUILD_NUMBER} ${IMAGE_NAME}:latest"
+                        bat "docker push ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                        bat "docker push ${IMAGE_NAME}:latest"
+                        bat "docker logout"
                     }
                 }
             }
