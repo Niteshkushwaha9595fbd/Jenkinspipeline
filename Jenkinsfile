@@ -12,7 +12,7 @@ pipeline {
         stage('SCM Checkout') {
             steps {
                 echo "Checking out source code..."
-                git url: 'https://github.com/Niteshkushwaha9595fbd/ReactTodoUIMonolith.git', branch: 'main'
+                git url: 'https://github.com/Niteshkushwaha9595fbd/Jenkinspipeline.git', branch: 'main'
 
                 // Show directory contents for debugging
                 bat 'dir'
