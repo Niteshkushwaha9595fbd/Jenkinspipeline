@@ -2,7 +2,7 @@ pipeline {
     agent { label 'nitesh23' }
 
     environment {
-        IMAGE_NAME = 'yourdockerhubusername/react-todo-ui'  // 🔁 Replace with your actual DockerHub repo name
+        IMAGE_NAME = 'niteshkushwaha95/react-todo-ui'  // 🔁 Replace with your actual DockerHub repo name
         DOCKERFILE_PATH = 'Dockerfile'  // 🔁 Update if Dockerfile is in a subfolder (e.g., 'frontend/Dockerfile')
         BUILD_CONTEXT = '.'             // 🔁 Update if needed (e.g., 'frontend')
     }
